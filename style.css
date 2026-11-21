@@ -1,0 +1,91 @@
+:root{
+  --cream:#fdf3e4; --pink:#f6c1cf; --pink-d:#d9788f;
+  --sky:#cfe6f3; --petrol:#1f5f6b; --petrol-d:#143f48;
+  --peach:#fbd9c4; --lav:#e3d6f0; --ink:#2b3a40;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Vazirmatn",Tahoma,sans-serif;background:var(--cream);color:var(--ink);line-height:1.9}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+section{padding:36px 0}
+
+/* photo placeholders */
+.photo{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:repeating-linear-gradient(45deg,#ffffff88 0 10px,#ffffff33 10px 20px);
+  border:3px dashed var(--pink-d);border-radius:26px;color:var(--pink-d);font-weight:600;
+  overflow:hidden;min-height:240px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo input{display:none}
+.photo:focus-visible{outline:3px solid var(--petrol);outline-offset:3px}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--pink),var(--peach) 55%,var(--sky));border-radius:0 0 48px 48px;padding:48px 0}
+.hero .wrap{max-width:1280px;display:grid;grid-template-columns:.85fr 1.25fr;gap:28px;align-items:center}
+.hero h1{font-family:"Pacifico",cursive;font-weight:400;direction:ltr;text-align:right;
+  font-size:clamp(2.2rem,6vw,4rem);line-height:1.3;color:var(--petrol-d)}
+.hero .photo{min-height:340px;aspect-ratio:5/4;max-height:420px;width:100%}
+
+/* date card */
+.story{background:#fff;border-radius:28px;padding:26px;border:2px solid var(--sky);box-shadow:0 10px 0 var(--sky)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.story h2{grid-column:1/-1;text-align:center;color:var(--petrol);font-size:1.5rem;margin-bottom:6px}
+table{width:100%;border-collapse:collapse;background:var(--cream);border-radius:16px;overflow:hidden}
+th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--pink)}
+th{background:var(--pink);color:var(--petrol-d);width:42%}
+tr:last-child th,tr:last-child td{border-bottom:0}
+.greg{background:var(--petrol);color:#fff;border-radius:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:18px;text-align:center}
+.greg small{opacity:.8}
+.greg strong{font-size:1.4rem;direction:ltr;display:block}
+
+/* then and now */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pair figure .photo{aspect-ratio:1/1;min-height:0}
+.pair figcaption{margin-top:12px;text-align:center;font-weight:800;font-size:1.2rem;color:var(--petrol)}
+
+/* messages */
+.msgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:24px;align-items:stretch}
+.msg{padding:28px;border-radius:26px 26px 26px 6px;min-height:340px;display:flex;flex-direction:column}
+.msg:nth-child(6n+1){background:var(--pink)}
+.msg:nth-child(6n+2){background:var(--sky)}
+.msg:nth-child(6n+3){background:var(--lav)}
+.msg:nth-child(6n+4){background:var(--peach)}
+.msg:nth-child(6n+5){background:#cfe9e1}
+.msg:nth-child(6n+6){background:#e7dfc6}
+.msg h3{color:var(--petrol-d);font-size:1.15rem;margin-bottom:6px}
+.msg p{flex:1;outline:none;color:#3d4d53;min-height:260px;font-size:1.05rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg p:empty::before{content:attr(data-ph);opacity:.55}
+
+.final .photo{aspect-ratio:16/9;min-height:0;max-width:760px;margin:0 auto}
+
+footer{background:var(--petrol-d);color:var(--cream);margin-top:30px;padding:22px 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+footer .cw{font-family:"Pacifico",cursive;direction:ltr;color:var(--pink)}
+
+@media(max-width:700px){
+  .hero .wrap,.story-grid,.pair{grid-template-columns:1fr}
+  .hero h1{text-align:center}
+}
+
+.shamsi{background:var(--cream);border:2px solid var(--pink);border-radius:16px;display:flex;align-items:center;justify-content:center;padding:18px}
+.shamsi strong{font-size:1.4rem;color:var(--petrol-d)}
+
+.photo img{object-fit:cover}
+.final .photo{aspect-ratio:4/3;max-width:620px}
+.final .photo img{object-position:center 25%}
+
+/* hero photo: dashed frame fitted tightly around the full photo, no blur, no crop */
+.hero .photo{display:inline-flex;width:fit-content;max-width:calc(100% - 150px);min-height:0;aspect-ratio:auto;max-height:none;
+  justify-self:end;margin-inline-end:150px;font-size:0;padding:0;background:none;border:3px dashed var(--pink-d);border-radius:26px;overflow:hidden}
+.hero .photo img{position:static;display:block;width:auto;height:auto;max-width:100%;max-height:440px;object-fit:contain}
+.hero h1{padding-right:24px}
+@media(max-width:900px){
+  .hero .photo{justify-self:center;margin-inline-end:0;max-width:100%}
+  .hero h1{padding-right:0}
+}
+
+/* hero: title on the left (English reads left-to-right), photo on the right */
+.hero .wrap{direction:ltr;grid-template-columns:1.25fr .85fr}
+.hero h1{text-align:left;padding-right:0;padding-left:24px}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero h1{text-align:center;padding-left:0}
+}
